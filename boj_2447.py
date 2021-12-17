@@ -1,32 +1,14 @@
-def draw_star(n):
-    global Map
 
-    if n == 3:
-        Map[0][:3] = Map[2][:3] = [1] * 3
-        Map[1][:3] = [1, 0, 1]
-        return
+def star(N):
+    if N == 1:
+        star(N//3)
+i = 0
 
-    a = n // 3
-    draw_star(n // 3)
-    for i in range(3):
-        for j in range(3):
-            if i == 1 and j == 1:
-                continue
-            for k in range(a):
-                Map[a * i + k][a * j:a * (j + 1)] = Map[k][:a]  # 핵심 아이디어
-
-
-N = int(input())
-
-# 메인 데이터 선언
-Map = [[0 for i in range(N)] for i in range(N)]
-
-draw_star(N)
-
-for i in Map:
-    for j in i:
-        if j:
-            print('*', end='')
-        else:
-            print(' ', end='')
-    print()
+while i != 3:
+   i = int(input("1.게임시작 2.랭킹보기 3.게임종료 >>> "))
+   if i == 1:
+       print("게임을 시작합니다")
+   elif i == 2:
+        print("실시간 랭킹")
+   elif i == 3:
+        print("게임을 종료합니다.")
